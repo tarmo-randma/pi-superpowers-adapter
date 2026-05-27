@@ -1,5 +1,7 @@
 # pi-superpowers-adapter
 
+[![npm version](https://img.shields.io/npm/v/@tarmo-randma/pi-superpowers-adapter.svg)](https://www.npmjs.com/package/@tarmo-randma/pi-superpowers-adapter)
+
 A small Pi package that gives Pi the upstream [obra/superpowers](https://github.com/obra/superpowers) skills without copying them into this repository.
 
 Status: `v0.1.2` release. Tested with Pi `0.75.x`. Uses upstream Superpowers `v5.1.0`. Adds Pi startup guidance and a `skill` tool, but does not provide or replace a subagent extension.
