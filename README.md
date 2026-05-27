@@ -2,14 +2,14 @@
 
 A small Pi package that gives Pi the upstream [obra/superpowers](https://github.com/obra/superpowers) skills without copying them into this repository.
 
-It adds Superpowers skill loading, startup guidance, and a `skill` tool for Pi. It does not provide or replace a subagent extension.
+Status: `v0.1.1` release. Tested with Pi `0.75.x`. Uses upstream Superpowers `v5.1.0`. Adds Pi startup guidance and a `skill` tool, but does not provide or replace a subagent extension.
 
 ## Install
 
 Ask your agent to run this, replacing the repo URL if needed:
 
 ```text
-Install this Pi package: pi install git:github.com/tarmo-randma/pi-superpowers-adapter@v0.1.0
+Install this Pi package: pi install git:github.com/tarmo-randma/pi-superpowers-adapter@v0.1.1
 ```
 
 ### Local checkout
@@ -21,12 +21,6 @@ pi install /path/to/pi-superpowers-adapter
 ```
 
 ## Upstream version
-
-This adapter currently uses:
-
-```text
-obra/superpowers v5.1.0
-```
 
 To change the upstream Superpowers version, edit the `obra-superpowers` dependency in `package.json`, then update/reinstall the Pi package.
 
@@ -52,6 +46,8 @@ If you want explicit mappings, create one of these files:
 ~/.pi/agent/superpowers-adapter.json
 .pi/superpowers-adapter.json
 ```
+
+The user-level path follows Pi's active agent config directory. If Pi is started with `PI_CODING_AGENT_DIR`, the adapter reads `superpowers-adapter.json` from that directory instead of `~/.pi/agent`.
 
 Project config overrides user config.
 

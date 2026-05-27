@@ -106,8 +106,12 @@ function readConfigFile(path: string): AdapterConfig {
   }
 }
 
+function piAgentDir(): string {
+  return process.env.PI_CODING_AGENT_DIR ?? join(homedir(), ".pi", "agent");
+}
+
 function loadConfig(cwd: string): AdapterConfig {
-  const userConfig = readConfigFile(join(homedir(), ".pi", "agent", "superpowers-adapter.json"));
+  const userConfig = readConfigFile(join(piAgentDir(), "superpowers-adapter.json"));
   const projectConfig = readConfigFile(join(cwd, ".pi", "superpowers-adapter.json"));
 
   return {
