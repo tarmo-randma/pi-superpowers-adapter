@@ -1,11 +1,27 @@
 {
-  "name": "pi-superpowers-adapter",
-  "version": "0.1.0",
+  "name": "@tarmo-randma/pi-superpowers-adapter",
+  "version": "0.1.2",
   "description": "Minimal Pi adapter for upstream obra/superpowers skills.",
   "license": "MIT",
   "type": "module",
-  "private": true,
   "keywords": ["pi-package", "pi-extension", "skills", "superpowers"],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tarmo-randma/pi-superpowers-adapter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tarmo-randma/pi-superpowers-adapter/issues"
+  },
+  "homepage": "https://github.com/tarmo-randma/pi-superpowers-adapter#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "src/",
+    "README.md",
+    "LICENSE",
+    "package.json"
+  ],
   "pi": {
     "extensions": ["./src/index.ts"],
     "skills": ["./node_modules/obra-superpowers/skills"]
