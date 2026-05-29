@@ -3,6 +3,7 @@ import { createRequire } from "node:module";
 import { homedir } from "node:os";
 import { dirname, join } from "node:path";
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
+import { Text } from "@earendil-works/pi-tui";
 import { Type } from "typebox";
 
 const require = createRequire(import.meta.url);
@@ -185,6 +186,13 @@ function createBootstrap(usingSuperpowers: string, modelGuidance: string): strin
   return `<EXTREMELY_IMPORTANT>\nYou have superpowers.\n\nPi notes:\n- Use \`skill\` for Superpowers skills. For Pi-native skills in \`<available_skills>\`, read their SKILL.md.\n- Tool mapping for upstream text: \`Task\` = installed Pi subagent tool if available; \`TodoWrite\` = available task tracker or a concise checklist; \`Read\`/\`Write\`/\`Edit\`/\`Bash\` = Pi tools.${modelBlock}\n- If spawned as a focused subagent, obey SUBAGENT-STOP guidance.\n\nBelow is the full content of your 'superpowers:using-superpowers' skill:\n\n${usingSuperpowers}\n</EXTREMELY_IMPORTANT>`;
 }
 
+function getResultText(result: { content?: Array<{ type?: string; text?: string }> }): string {
+  return (result.content ?? [])
+    .filter((block) => block.type === "text" && typeof block.text === "string")
+    .map((block) => block.text)
+    .join("\n");
+}
+
 export default function superpowersAdapter(pi: ExtensionAPI) {
   let skills = loadSkills();
 
@@ -243,6 +251,21 @@ export default function superpowersAdapter(pi: ExtensionAPI) {
         content: [{ type: "text", text: found.content }],
         details: { name: found.name, found: true, path: found.path, description: found.description ?? "", available: availableNames },
       };
+    },
+    renderCall(args, theme, context) {
+      const name = typeof args?.name === "string" && args.name.trim() ? args.name.trim() : "...";
+      let line = theme.fg("customMessageLabel", `${theme.bold("[skill]")} `) + theme.fg("customMessageText", name);
+      if (!context.expanded) {
+        line += theme.fg("dim", " (tool output toggle to expand)");
+      }
+      return new Text(line, 0, 0);
+    },
+    renderResult(result, options, theme, context) {
+      const isError = context.isError || result.details?.found === false;
+      if (!options.expanded && !isError) {
+        return new Text("", 0, 0);
+      }
+      return new Text(theme.fg(isError ? "error" : "toolOutput", getResultText(result)), 0, 0);
     },
   });
 

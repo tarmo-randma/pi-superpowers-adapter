@@ -4,14 +4,14 @@
 
 A small Pi package that gives Pi the upstream [obra/superpowers](https://github.com/obra/superpowers) skills without copying them into this repository.
 
-Status: `v0.1.2` release. Tested with Pi `0.75.x`. Uses upstream Superpowers `v5.1.0`. Adds Pi startup guidance and a `skill` tool, but does not provide or replace a subagent extension.
+Status: `v0.1.3` release. Tested with Pi `0.75.x`. Uses upstream Superpowers `v5.1.0`. Adds Pi startup guidance and a `skill` tool, but does not provide or replace a subagent extension.
 
 ## Install
 
 Ask your agent to run this:
 
 ```text
-Install this Pi package: pi install npm:@tarmo-randma/pi-superpowers-adapter@0.1.2
+Install this Pi package: pi install npm:@tarmo-randma/pi-superpowers-adapter@0.1.3
 ```
 
 ### Local checkout
