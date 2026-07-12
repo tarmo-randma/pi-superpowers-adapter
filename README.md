@@ -1,5 +1,14 @@
 # pi-superpowers-adapter
 
+> [!IMPORTANT]
+> **This project is archived and no longer maintained.**
+>
+> Upstream [obra/superpowers](https://github.com/obra/superpowers) now supports Pi natively, so this adapter is no longer necessary. Install upstream Superpowers directly instead:
+>
+> ```bash
+> pi install git:github.com/obra/superpowers
+> ```
+
 [![npm version](https://img.shields.io/npm/v/@tarmo-randma/pi-superpowers-adapter.svg)](https://www.npmjs.com/package/@tarmo-randma/pi-superpowers-adapter)
 
 A small Pi package that gives Pi the upstream [obra/superpowers](https://github.com/obra/superpowers) skills without copying them into this repository.
